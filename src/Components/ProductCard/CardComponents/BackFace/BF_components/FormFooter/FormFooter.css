@@ -1,0 +1,27 @@
+.backFace .formFooter {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.backFace .formFooter .fromBtn {
+    color: var(--DT-text);
+    border: 1px solid var(--DT-borderLight);
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.backFace .formFooter .saveBtn {
+    background: var(--primary2-color);
+    padding: 5px 30px;
+    color: var(--primary-color);
+
+}
+
+.backFace .formFooter .cancelBtn {
+    background-color: var(--DT-nestedComponent);
+}

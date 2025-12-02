@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:slnt,wght@-11..11,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* ============================
+   VARIABLES (Theme) 
+============================ */
+:root {
+  /**default theme variables*/
+  --primary-color: #ffd900d5;
+  --primary2-color: #6a34c2;
+  --primary-linear: linear-gradient(-45deg, #ceb213, #e9ab0e, #f3d093);
+  --DT-bg: radial-gradient(circle at 50% 50%, #060010 0%, #0b0020 100%);
+  --DT-component: #170d27;
+  --DT-nestedComponent: #24173a;
+  --DT-text: #f2f2f2;
+  --DT-secText: #ffffff9d;
+  --DT-borderLight: #312d3f;
+  --DT-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --DT-gold-shadow: 0 6px 16px rgba(212, 175, 55, 0.2);
+
+  /*other variables*/
+  --radius: 15px;
+  --nav-height: 65px;
+  --dynamicVH-height: calc(100dvh - var(--nav-height));
+  --fast-transition: .1s ease-in-out all;
+  --mid-transition: .2s ease-in-out all;
+  --main-transition: .3s ease-in-out all;
+}
+
+
+
+
+
+
+/* ============================
+  GLOBAL RESET + BASE STYLES
+============================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--DT-borderLight) var(--DT-component);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+
+body {
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+  background: var(--DT-bg);
+  color: var(--DT-text);
+  font-family: 'Cairo', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================
+   TEXT STYLES
+============================ */
+.gold {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.gold-accent {
+  position: relative;
+}
+
+.gold-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 40%;
+  background: var(--gold-gradient);
+  border-radius: 3px;
+}
+
+
+/* ============================
+   INPUTS
+============================ */
+.input {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Remove default styles for interactive elements */
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+/* Focus effect */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  display: block;
+}

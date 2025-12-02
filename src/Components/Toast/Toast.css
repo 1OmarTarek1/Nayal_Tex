@@ -1,0 +1,61 @@
+.toast {
+    position: fixed;
+    top: 0; /* خليها تبدأ من فوق */
+    right: 50%;
+    transform: translateX(50%) translateY(15px); /* فقط أفقي */
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 9999;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    word-wrap: break-word;
+}
+
+
+.toast-success {
+    background-color: #4caf50;
+    color: white;
+    border-left: 4px solid #388e3c;
+}
+
+.toast-error {
+    background-color: #f44336;
+    color: white;
+    border-left: 4px solid #d32f2f;
+}
+
+.toast-warning {
+    background-color: #ff9800;
+    color: white;
+    border-left: 4px solid #f57c00;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(50%) translateY(-400px); /* فوق الشاشة */
+        opacity: 0;
+    }
+    to {
+        transform: translateX(50%) translateY(15px); /* موقع ثابت */
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(50%) translateY(15px);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(50%) translateY(-400px);
+        opacity: 0;
+    }
+}
+
+
+.toast.fade-out {
+    animation: slideOut 0.3s ease-in forwards;
+}

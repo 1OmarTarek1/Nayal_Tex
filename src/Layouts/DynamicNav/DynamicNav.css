@@ -1,0 +1,21 @@
+.dynamicNav {
+    height: var(--nav-height);
+    /* padding-inline: 15px; */
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    border-bottom: 1px solid var(--DT-borderLight);
+    background-color: var(--DT-component);
+    border-right: 1px solid var(--DT-borderLight);
+
+}
+
+.dynamicNav .navTitle {
+    padding: 5px 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border: 1px solid var(--DT-borderLight);
+    border-radius: 10px;
+    background-color: var(--DT-bg);
+    color: var(--DT-text);
+}

@@ -1,0 +1,212 @@
+.salesPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.graphContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.graphGrid {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+}
+
+.graphGrid.twoColumns {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.graphSection {
+  width: 100%;
+  background: var(--DT-component);
+  border: 1px solid var(--DT-borderLight);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+  margin: 0 0 20px 0;
+  color: var(--primary2-color);
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.pageSubtitle {
+  color: var(--DT-text);
+  font-size: 18px;
+  font-weight: 600;
+  text-align: right;
+  margin: 30px 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary2-color);
+}
+
+.sectionDivider {
+  width: 100%;
+  border: none;
+  border-top: 2px solid var(--DT-borderLight);
+  margin: 40px 0;
+}
+
+.chartContainer {
+  width: 100%;
+  min-height: 350px;
+}
+
+/* ========== Responsive Design ========== */
+
+/* Large tablets and small desktops (1024px - 1200px) */
+@media (max-width: 1200px) {
+  .salesPage {
+    gap: 18px;
+  }
+
+  .graphContainer {
+    gap: 18px;
+  }
+
+  .graphGrid {
+    gap: 18px;
+  }
+
+  .graphSection {
+    padding: 18px;
+  }
+
+  .sectionTitle {
+    font-size: 15px;
+    margin-bottom: 15px;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .graphGrid.twoColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .salesPage {
+    gap: 15px;
+  }
+
+  .graphContainer {
+    flex-direction: column !important;
+    gap: 15px;
+  }
+
+  .graphSection {
+    flex: 1;
+
+  }
+
+  .graphGrid {
+    gap: 15px;
+  }
+}
+
+/* Mobile landscape and small tablets (480px - 768px) */
+@media (max-width: 768px) {
+  .salesPage {
+    gap: 12px;
+    padding: 15px 0;
+  }
+
+  .graphContainer {
+    gap: 12px;
+  }
+
+  .graphGrid {
+    gap: 12px;
+  }
+
+  .graphSection {
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .sectionTitle {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .pageSubtitle {
+    font-size: 16px;
+    margin: 20px 0 15px 0;
+  }
+
+  .chartContainer {
+    min-height: 300px;
+  }
+}
+
+/* Mobile portrait (360px - 480px) */
+@media (max-width: 480px) {
+  .salesPage {
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .graphContainer {
+    gap: 10px;
+  }
+
+  .graphGrid {
+    gap: 10px;
+  }
+
+  .graphSection {
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .sectionTitle {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .pageSubtitle {
+    font-size: 15px;
+    margin: 15px 0 12px 0;
+  }
+
+  .chartContainer {
+    min-height: 250px;
+  }
+}
+
+/* Extra small mobile (< 360px) */
+@media (max-width: 360px) {
+  .salesPage {
+    gap: 8px;
+    padding: 8px 0;
+  }
+
+  .graphContainer {
+    gap: 8px;
+  }
+
+  .graphGrid {
+    gap: 8px;
+  }
+
+  .graphSection {
+    padding: 10px;
+  }
+
+  .sectionTitle {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .chartContainer {
+    min-height: 220px;
+  }
+}

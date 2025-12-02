@@ -1,0 +1,67 @@
+.cardWrapper:last-child,
+.cardWrapper:nth-last-child(2) {
+    max-width: 320px;
+}
+
+.cardWrapper {
+    flex: 1 24%;
+    perspective: 1200px;
+    width: 320px;
+    height: 400px;
+    position: relative;
+    background-color: var(--DT-component);
+    color: var(--DT-text);
+    border-radius: var(--radius);
+    border: 1px solid var(--DT-borderLight);
+    box-shadow: var(--DT-shadow);
+    overflow: hidden;
+}
+
+.flip-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: transform 0.4s ease-in-out;
+    padding: 10px;
+    will-change: transform;
+}
+
+.flip-face.frontFace {
+    transform: rotateY(0deg);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.flip-face.backFace {
+    transform: rotateY(-180deg);
+}
+
+/* flip state */
+.cardWrapper.flipped .flip-face.frontFace {
+    transform: rotateY(180deg);
+}
+
+.cardWrapper.flipped .flip-face.backFace {
+    transform: rotateY(0deg);
+}
+
+@media (max-width: 1250px) {
+
+
+
+    .cardWrapper {
+        flex: 1 31%;
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .cardWrapper:last-child,
+    .cardWrapper:nth-last-child(2) {
+        max-width: unset;
+    }
+}

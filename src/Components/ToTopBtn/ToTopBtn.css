@@ -1,0 +1,62 @@
+/*START UP Button*/
+.arrow-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: .5%;
+    z-index: 5000;
+    font-size: 23px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    background-color: var(--primary-color);
+    color: var(--DT-text);
+    /* opacity: .5; */
+    overflow: hidden;
+    transition: all .3s;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.arrow-btn .lines-wrapper {
+    position: relative;
+    background-color: transparent;
+    width: 20px;
+    height: 25px;
+    overflow: hidden;
+}
+
+.arrow-btn .lineBtn {
+    position: absolute;
+    left: 49%;
+    top: 50%;
+    transition: all .3s ease-in-out;
+}
+
+.arrow-btn .line-1 {
+    transform: translate(-50%, -50%);
+}
+
+.arrow-btn .line-2 {
+    transform: translate(-50%, 100%);
+}
+
+
+.arrow-btn:hover .line-1 {
+    transform: translate(-50%, -150%);
+}
+
+.arrow-btn:hover .line-2 {
+    transform: translate(-50%, -50%);
+}
+
+.arrow-btn svg {
+    transition: all .3s ease-in-out;
+}
+
+
+/*END UP Button*/

@@ -1,0 +1,261 @@
+﻿.inventoryPage .filterSearchContainer {
+    display: grid;
+    align-items: center;
+    background-color: #0000002c;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 0px;
+    position: sticky;
+    top: 8px;
+    width: 100%;
+    z-index: 50;
+    height: auto;
+}
+
+.inventoryPage .filterHeader {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ffffff2a;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+
+}
+
+.inventoryPage .searchBox {
+    position: relative;
+    flex: 2 165px;
+}
+
+.inventoryPage .searchInput {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid #ffffff2a;
+    border-radius: 6px;
+    font-size: 13px;
+    background: #00000036;
+    color: var(--DT-text);
+    transition: var(--fast-transition);
+}
+
+.inventoryPage .searchInput::placeholder {
+    color: var(--DT-secText);
+}
+
+.inventoryPage .searchInput:focus {
+    border-color: var(--primary2-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.inventoryPage .searchIcon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--DT-secText);
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.inventoryPage .filterToggleBtn {
+    padding: 10px 16px;
+    background: var(--primary2-color);
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--fast-transition);
+    white-space: nowrap;
+    display: none;
+}
+
+.inventoryPage .filterToggleBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+.inventoryPage .filterToggleBtn:active {
+    transform: translateY(0);
+}
+
+.inventoryPage .filterPanel {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    margin-top: 0;
+    animation: none;
+    border: none;
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    align-items: flex-end;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.inventoryPage .filterGroup {
+    flex: 1;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.inventoryPage .filterLabel {
+    display: none;
+    font-weight: 600;
+    color: var(--DT-text);
+    margin-bottom: 0px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inventoryPage .filterSelect {
+    min-width: 85px;
+    padding: 9px 10px;
+    border: 1px solid #ffffff2a;
+    border-radius: 5px;
+    font-size: 12px;
+    background: #00000036;
+    color: var(--DT-text);
+    cursor: pointer;
+    transition: var(--fast-transition);
+    font-family: 'Cairo', sans-serif;
+    /* remove default arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.inventoryPage .filterSelect option {
+    background-color: var(--DT-component);
+    color: var(--DT-text);
+}
+
+
+.inventoryPage .filterSelect:hover,
+.inventoryPage .filterSelect:focus {
+    border-color: var(--primary2-color);
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+.inventoryPage .colorFilter {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+    margin-bottom: 0;
+}
+
+.inventoryPage .colorOptionBtn {
+    padding: 8px 10px;
+    border: 1px solid #ffffff2a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: var(--fast-transition);
+    font-weight: 600;
+    min-width: 30px;
+    min-height: 30px;
+    text-align: center;
+    flex-shrink: 0;
+    background: transparent;
+    color: var(--DT-text);
+}
+
+.inventoryPage .colorOptionBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.inventoryPage .colorOptionBtn.active {
+    border: 2px solid var(--primary2-color);
+    box-shadow: 0 0 10px rgba(72, 24, 204, 0.3);
+    transform: scale(1.1) translateY(-3px);
+}
+
+.inventoryPage .colorOptionBtn.all-colors {
+    background: var(--DT-component);
+    color: var(--DT-text);
+    border: 2px solid var(--DT-borderLight);
+}
+
+.inventoryPage .colorOptionBtn.all-colors.active {
+    background: var(--primary2-color);
+    color: #000;
+    border: 1px solid var(--primary2-color);
+}
+
+.inventoryPage .filterResults {
+    display: grid;
+    place-content: center;
+    width: 35px !important;
+    height: 35px;
+    color: var(--DT-text);
+    font-size: 12px;
+    margin: 0;
+    border: 1px solid #ffffff2a;
+    background: #00000036;
+    border-radius: 5px;
+    font-weight: 500;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+.inventoryPage .filterResults strong {
+    color: var(--primary2-color);
+    font-weight: 700;
+}
+
+.inventoryPage .clearFiltersBtn {
+    padding: 6px 8px;
+    background: transparent;
+    color: var(--primary2-color);
+    border: 1px solid var(--primary2-color);
+    border-radius: 5px;
+    font-size: 20px;
+    line-height: 0;
+    cursor: pointer;
+    transition: var(--fast-transition);
+    font-family: 'Cairo', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.inventoryPage .clearFiltersBtn:hover {
+    background: var(--primary2-color);
+    color: #fff;
+}
+
+.inventoryPage .noResults {
+    padding: 16px 20px;
+    text-align: center;
+    color: var(--DT-secText);
+    font-size: 13px;
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 6px;
+    margin-top: 10px;
+}

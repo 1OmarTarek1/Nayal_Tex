@@ -1,0 +1,44 @@
+.backFace .formHeader .formTitle {
+    width: 100%;
+    padding-block: 6px 7px;
+    text-align: center;
+    background-color: var(--primary2-color);
+    /* color: var(--DT-text); */
+    color: var(--primary-color);
+    border: 1px solid var(--DT-borderLight);
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+
+.backFace .formHeader .productData {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 15px;
+    gap: 5px;
+}
+
+.backFace .formHeader .productData .dataItem {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-size: 12px;
+    gap: 5px;
+}
+
+.backFace .formHeader .productData .dataItem div {
+    width: 100%;
+    background-color: transparent;
+    padding-block: 5px;
+    border: 1px solid var(--DT-borderLight);
+    border-radius: 5px;
+    background-color: var(--DT-nestedComponent);
+    text-align: center;
+    white-space: nowrap;     
+    overflow: hidden;         
+    text-overflow: ellipsis;
+}

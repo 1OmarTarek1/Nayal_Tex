@@ -1,0 +1,48 @@
+.hamburgerBtn {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    gap: 5px;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ffffff3b;
+    border-radius: 3px;
+    background-color: transparent;
+}
+
+.line {
+    position: relative;
+    width: 17px;
+    height: 2px;
+    border-radius: 5px;
+    background: #fff;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    transform-origin: center;
+}
+
+/* عند فتح الهامبرجر */
+.hamburgerBtn.open .line1 {
+    transform: translateY(7.5px) rotate(405deg);
+}
+
+.hamburgerBtn.open .line2 {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburgerBtn.open .line3 {
+    transform: translateY(-7.5px) rotate(315deg);
+    top: 1px;
+}
+
+
+/* responsive */
+@media (max-width: 768px) {
+    .hamburgerBtn {
+        display: flex;
+    }
+}

@@ -1,0 +1,8 @@
+.imgWrapper img {
+    border-radius: 8px;
+    transition: var(--main-transition) !important;
+
+    &:hover {
+        transform: scale(1.05) !important;
+    }
+}

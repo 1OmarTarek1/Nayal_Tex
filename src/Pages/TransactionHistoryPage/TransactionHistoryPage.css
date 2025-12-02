@@ -1,0 +1,41 @@
+/* ========================================================
+   Transaction History Page CSS
+======================================================== */
+
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  background: var(--DT-component);
+  color: var(--DT-text);
+  padding: 18px;
+  border-radius: 8px;
+  width: 480px;
+  max-width: 92%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.actionBtn {
+  line-height: 0;
+  border-radius: 6px;
+  border: 1px solid var(--DT-borderLight);
+  cursor: pointer;
+  padding: 15px 10px;
+  background: var(--DT-nestedComponent);
+  color: var(--DT-text);
+  font-size: 12px;
+}
+
+.actionBtn.danger {
+  border-color: rgba(244, 67, 54, 0.356);
+  color: #F44336;
+}

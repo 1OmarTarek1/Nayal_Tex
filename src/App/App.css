@@ -1,0 +1,41 @@
+/* ============================
+   SURFACE ELEMENTS (Cards, Sections)
+============================ */
+.surface {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 20px;
+}
+
+/* ============================
+   BUTTONS
+============================ */
+.btn-gold {
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  background: var(--gold-gradient);
+  color: #000;
+  font-weight: 700;
+  box-shadow: var(--gold-shadow);
+  transition: 0.2s;
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+}
+
+.btn-gold:active {
+  transform: translateY(1px);
+}
+
+/* Ghost button */
+.btn-gold-ghost {
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--gold);
+}

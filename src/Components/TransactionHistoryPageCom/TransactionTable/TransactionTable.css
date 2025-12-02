@@ -1,0 +1,91 @@
+/* Table Wrapper for Scroll */
+.tableContainer {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    background: var(--DT-component);
+    border: 1px solid var(--DT-borderLight);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.transactionsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.transactionsTable thead {
+    background: var(--DT-nestedComponent);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--DT-borderLight);
+    color: var(--DT-secText);
+    font-weight: 500;
+}
+
+
+.transactionsTable th,
+.transactionsTable td {
+    text-align: center;
+    padding: 10px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: center;
+}
+
+.transactionsTable tbody tr {
+    border-bottom: 1px solid var(--DT-borderLight);
+    transition: all 0.2s ease;
+}
+
+.transactionsTable tbody tr:hover {
+    background: rgba(155, 89, 182, 0.05);
+}
+
+/* No Data Message */
+.noTransactions {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--DT-secText);
+}
+
+.noTransactions p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Results Summary */
+.resultsSummary {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background: var(--DT-nestedComponent);
+    border-radius: 6px;
+    text-align: center;
+    color: var(--DT-secText);
+    font-size: 12px;
+}
+
+.resultsSummary strong {
+    color: var(--primary2-color);
+    font-weight: 700;
+}
+
+@media (max-width: 1024px) {
+    .transactionsTable {
+        table-layout: fixed;
+        font-size: 11px;
+    }
+
+    .transactionsTable th,
+    .transactionsTable td {
+        padding: 8px 6px;
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}

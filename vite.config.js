@@ -1,0 +1,28 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import glsl from 'vite-plugin-glsl'   // 👈 استيراد البلجن
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  base: '/Hamza/',
+  plugins: [
+    react({
+      devTools: true,
+    }),
+    glsl(),  // 👈 أضف البلجن هنا
+  ],
+  css: {
+    devSourcemap: true, 
+  },
+  resolve: {
+    alias: {
+      'react-dom/client': resolve(__dirname, 'src/shims/react-dom-client.js'),
+      'react-router-dom/dist/index.mjs': 'react-router-dom/dist/index.js',
+    },
+  },
+})

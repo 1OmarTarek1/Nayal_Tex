@@ -1,0 +1,37 @@
+.my-masonry-grid {
+  display: flex;
+  margin-left: -15px;
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 15px;
+  background-clip: padding-box;
+}
+
+.imgWrapper {
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: var(--main-transition);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+
+
+
+@media (max-width: 768px) {
+  .my-masonry-grid {
+    margin-left: -7px;
+  }
+
+  .my-masonry-grid_column {
+    padding-left: 7px;
+  }
+
+  .imgWrapper {
+    margin-bottom: 7px;
+  }
+}
+
+/* Responsive adjustments handled in Masonry breakpoints */

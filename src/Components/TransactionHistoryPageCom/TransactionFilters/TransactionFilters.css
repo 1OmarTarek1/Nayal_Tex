@@ -1,0 +1,95 @@
+/* Filter Section */
+.transactionHistoryPage .filterSection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    background: var(--DT-component);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--DT-borderLight);
+}
+
+.transactionHistoryPage .filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.transactionHistoryPage .filterGroup label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--DT-secText);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.transactionHistoryPage .dateInput {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--DT-borderLight);
+    background: var(--DT-nestedComponent);
+    color: var(--DT-text);
+    font-size: 13px;
+    min-width: 150px;
+    direction: ltr;
+    text-align: right;
+}
+
+.transactionHistoryPage .filterGroup select,
+.transactionHistoryPage .filterGroup input:not(.dateInput) {
+    padding: 8px 12px;
+    border: 1px solid var(--DT-borderLight);
+    border-radius: 6px;
+    background: var(--DT-nestedComponent);
+    color: var(--DT-text);
+    font-size: 13px;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.transactionHistoryPage .filterGroup select:focus,
+.transactionHistoryPage .filterGroup input:focus {
+    outline: none;
+    border-color: var(--primary2-color);
+    box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+}
+
+.transactionHistoryPage .filterGroup.searchGroup {
+    flex: 1;
+    min-width: 250px;
+}
+
+.transactionHistoryPage .filterGroup.searchGroup input {
+    min-width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .transactionHistoryPage .filterGroup {
+        min-width: 150px;
+    }
+
+    .transactionHistoryPage .dateInput {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .transactionHistoryPage .filterSection {
+        flex-direction: column;
+    }
+
+    .transactionHistoryPage .filterGroup {
+        width: 100%;
+    }
+
+    .transactionHistoryPage .filterGroup select,
+    .transactionHistoryPage .filterGroup input {
+        min-width: 100%;
+    }
+
+    .transactionHistoryPage .dateInput {
+        width: 100%;
+    }
+}

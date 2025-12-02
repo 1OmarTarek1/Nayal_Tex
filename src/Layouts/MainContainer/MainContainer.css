@@ -1,0 +1,24 @@
+.MainContainer {
+    width: 1450px;
+    margin-inline: auto;
+    margin-top: 90px;
+    min-height: var(--dynamicVH-height);
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1500px) {
+    .MainContainer {
+        width: 1000px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 1050px) {
+    .MainContainer {
+        width: 100%;
+    }
+}

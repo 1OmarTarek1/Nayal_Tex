@@ -1,0 +1,20 @@
+.backFace {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--DT-borderLight);
+    border-radius: 5px;
+    color: var(--DT-text);
+    background-color: var(--DT-nestedComponent);
+}
+.formInput:last-child {
+    margin-bottom: 0px;
+}

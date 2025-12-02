@@ -1,0 +1,28 @@
+.frontFace .cardContent {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+
+.frontFace .cardContent .contentItem {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.frontFace .cardContent .contentItem .DT-text {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--DT-borderLight);
+    border-radius: var(--smRadius);
+    color: var(--DT-text);
+    background-color: var(--DT-nestedComponent);
+    font-size: 12px;
+    padding-block: 2px;
+    font-weight: 700;
+}

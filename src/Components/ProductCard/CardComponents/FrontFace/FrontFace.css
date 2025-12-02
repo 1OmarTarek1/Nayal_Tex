@@ -1,0 +1,93 @@
+:root {
+    --opacityBG: #0600104f;
+    --smRadius: 5px;
+    --smoothLight: #a59cc744;
+    --layout-padding: 5px;
+}
+
+
+
+.imageContent {
+    position: relative;
+}
+
+/*Image*/
+.imageContent .cardImgWrapper {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    border-radius: calc(var(--radius) - 10px);
+}
+
+.imageContent .cardImgWrapper img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: var(--SR);
+}
+
+.SCBG-container,
+.InventoryActionsBtns,
+.colorTitle,
+.shapeTitle,
+.cardTitle {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--opacityBG);
+    border: 1px solid var(--smoothLight);
+    border-radius: var(--smRadius);
+    color: var(--DT-text);
+}
+
+
+
+.colorTitle {
+    top: var(--layout-padding);
+    right: var(--layout-padding);
+    font-size: 12px;
+    padding: 2px 10px;
+}
+
+.shapeTitle {
+    top: var(--layout-padding);
+    left: var(--layout-padding);
+    font-size: 12px;
+    padding: 2px 10px;
+}
+
+.cardTitle {
+    bottom: var(--layout-padding);
+    left: var(--layout-padding);
+    right: var(--layout-padding);
+    padding-block: 4px;
+}
+
+.InventoryActionsBtns {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--layout-padding);
+    border: none;
+    left: var(--layout-padding);
+    top: 50%;
+    transform: translatey(-50%);
+}
+
+.InventoryActionsBtns button {
+    background-color: var(--opacityBG);
+    color: var(--DT-text);
+    padding: 2px 10px;
+    border: 1px solid var(--smoothLight);
+    border-radius: var(--smRadius);
+    font-size: 14px;
+    cursor: pointer;
+}
