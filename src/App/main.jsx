@@ -11,7 +11,7 @@ if (!window.global) {
 
 ReactDOM.render(
   <StrictMode>
-    <BrowserRouter basename='/Hamza'>
+    <BrowserRouter basename='/Nayal_Tex'>
       <App />
     </BrowserRouter>
   </StrictMode>,
