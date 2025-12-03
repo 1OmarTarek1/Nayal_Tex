@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { DynamicNav, MainContainer } from '../../Layouts';
 import useInventoryStore from '../../store/inventoryStore';
-import { useTransactions } from '../../hooks/useInventory.js';
-import Toast from '../../Components/Toast/Toast';
+import { useTransactions } from '../../Hooks/useInventory.js';
+import { Toast } from '../../Layouts';
 import { toArabicDigits } from '../../utils/numbers';
 import './TransactionHistoryPage.css';
 
@@ -14,8 +14,8 @@ import TransactionTable from '../../Components/TransactionHistoryPageCom/Transac
 import UndoSnackbar from '../../Components/TransactionHistoryPageCom/UndoSnackbar/UndoSnackbar';
 
 // Hooks
-import { useTransactionFilters } from '../../hooks/useTransactionFilters';
-import { useTransactionActions } from '../../hooks/useTransactionActions';
+import { useTransactionFilters } from '../../Hooks/useTransactionFilters';
+import { useTransactionActions } from '../../Hooks/useTransactionActions';
 
 const TransactionHistoryPage = () => {
   const transactions = useInventoryStore(state => state.transactions);

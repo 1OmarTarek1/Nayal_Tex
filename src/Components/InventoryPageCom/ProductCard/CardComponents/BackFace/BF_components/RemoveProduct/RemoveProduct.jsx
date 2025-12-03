@@ -1,7 +1,6 @@
 import { useState, forwardRef, useImperativeHandle } from 'react'
-import { useRemoveProduct } from '../../../../../../hooks/useInventory'
-import useInventoryStore from '../../../../../../store/inventoryStore'
-import Toast from '../../../../../Toast/Toast'
+import { useRemoveProduct } from '../../../../../../../Hooks/useInventory';
+import { Toast } from '../../../../../../../Layouts'
 import './RemoveProduct.css'
 
 const RemoveProduct = forwardRef(({ allData, onSubmit, selectedVariantIndex = 0 }, ref) => {
@@ -22,12 +21,12 @@ const RemoveProduct = forwardRef(({ allData, onSubmit, selectedVariantIndex = 0 
 
     const validateAndSubmit = () => {
         const qty = parseInt(count, 10)
-        
+
         if (!count || count.trim() === '') {
             showToast('الرجاء إدخال الكمية', 'warning')
             return
         }
-        
+
         if (isNaN(qty) || qty <= 0) {
             showToast('الكمية يجب أن تكون رقم موجب', 'error')
             return
@@ -37,35 +36,35 @@ const RemoveProduct = forwardRef(({ allData, onSubmit, selectedVariantIndex = 0 
             showToast('لم يتم العثور على اللون', 'error')
             return
         }
-        
+
         if (variant.inStock < qty) {
             showToast(`المخزون غير كافي! المتوفر: ${variant.inStock}`, 'error')
             return
         }
-        
+
         if (!name || name.trim() === '') {
             showToast('الرجاء إدخال اسم المستلم', 'warning')
             return
         }
-        
+
         if (name.trim().length < 2) {
             showToast('اسم المستلم يجب أن يكون أطول من حرفين', 'error')
             return
         }
-        
+
         if (!phone || phone.trim() === '') {
             showToast('الرجاء إدخال رقم الهاتف', 'warning')
             return
         }
-        
+
         if (!validatePhone(phone)) {
             showToast('رقم الهاتف غير صحيح (يجب أن يكون 8 أرقام على الأقل)', 'error')
             return
         }
 
         // Pass metadata with the transaction
-        removeProduct(allData.typeId, allData.id, variant.id, qty, { 
-            name: name.trim(), 
+        removeProduct(allData.typeId, allData.id, variant.id, qty, {
+            name: name.trim(),
             phone: phone.trim()
         })
         showToast(`تم إزالة ${qty} وحدة من المخزون بنجاح`, 'success')
@@ -119,7 +118,7 @@ const RemoveProduct = forwardRef(({ allData, onSubmit, selectedVariantIndex = 0 
                     }}
                     onKeyPress={(e) => e.key === 'Enter' && handleSubmit()}
                     maxLength="15"
-                    style={{direction:"rtl"}}
+                    style={{ direction: "rtl" }}
                     inputMode="numeric"
                 />
             </div>

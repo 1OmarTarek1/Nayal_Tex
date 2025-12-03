@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { DynamicNav, MainContainer } from '../../Layouts'
 import { ProductCard, FilterSearch } from '../../Components'
-import { useCurtainTypes } from '../../hooks/useInventory.js';
+import { useCurtainTypes } from '../../Hooks/useInventory.js';
 import './InventoryPage.css';
 
 const InventoryPage = () => {

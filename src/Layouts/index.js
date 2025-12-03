@@ -3,3 +3,5 @@ export { default as MainNavbar } from './MainNavbar/MainNavbar';
 export { default as SidebarSec } from './SidebarSec/SidebarSec';
 export { default as MainContainer } from './MainContainer/MainContainer';
 export { default as AppRoutes } from './Routes/AppRoutes';
+export { default as Toast } from './Toast/Toast';
+export { default as ToTopBtn } from './ToTopBtn/ToTopBtn';

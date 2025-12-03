@@ -1,5 +1,5 @@
-import { ToTopBtn } from '../Components'
-import { AppRoutes, MainNavbar, SidebarSec } from '../Layouts'
+import ToTopReload from '../Hooks/ToTopReload'
+import { AppRoutes, MainNavbar, SidebarSec, ToTopBtn } from '../Layouts'
 import './App.css'
 import './index.css'
 
@@ -14,6 +14,7 @@ function App() {
         <AppRoutes />
       </div>
       <ToTopBtn />
+      <ToTopReload />
     </>
   )
 }

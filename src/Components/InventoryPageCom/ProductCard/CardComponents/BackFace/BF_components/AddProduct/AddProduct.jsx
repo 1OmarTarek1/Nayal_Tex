@@ -1,7 +1,6 @@
 import { useState, forwardRef, useImperativeHandle } from 'react'
-import { useAddProduct } from '../../../../../../hooks/useInventory'
-import useInventoryStore from '../../../../../../store/inventoryStore'
-import Toast from '../../../../../Toast/Toast'
+import { useAddProduct } from '../../../../../../../Hooks/useInventory';
+import { Toast } from '../../../../../../../Layouts'
 import './AddProduct.css'
 
 const AddProduct = forwardRef(({ allData, onSubmit, selectedVariantIndex = 0 }, ref) => {
@@ -16,17 +15,17 @@ const AddProduct = forwardRef(({ allData, onSubmit, selectedVariantIndex = 0 }, 
 
     const validateAndSubmit = () => {
         const qty = parseInt(amount, 10)
-        
+
         if (!amount || amount.trim() === '') {
             showToast('الرجاء إدخال كمية', 'warning')
             return
         }
-        
+
         if (isNaN(qty) || qty <= 0) {
             showToast('الكمية يجب أن تكون رقم موجب', 'error')
             return
         }
-        
+
         if (qty > 1000) {
             showToast('الكمية لا يمكن أن تتجاوز 1000', 'error')
             return

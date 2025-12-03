@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { FaRegEdit, FaTrashAlt } from 'react-icons/fa';
 import { FaRegEye } from 'react-icons/fa6';
 import useInventoryStore from '../../../store/inventoryStore';
-import Toast from '../../../Components/Toast/Toast';
+import { Toast } from '../../../Layouts';
 import { toArabicDigits } from '../../../utils/numbers';
 import './TransactionRow.css';
 

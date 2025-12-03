@@ -1,8 +1,8 @@
 import { DynamicNav, MainContainer } from '../../Layouts';
 import { BuildingGraph, CircleGraph, PizzaGraph, WaveGraph, ProductAddedGraph, ProductRemovedGraph, ComparisonGraph } from '../../Sections';
 import RadarGraph from '../../Sections/RadarGraph/RadarGraph';
-import useInventoryAnalytics from '../../hooks/useSalesAnalytics';
-import InventoryKPIs from '../../Components/InventoryKPIs/InventoryKPIs';
+import useInventoryAnalytics from '../../Hooks/useSalesAnalytics';
+import { InventoryKPIs } from '../../Components';
 
 import './SalesPage.css';
 

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
-import useInventoryStore from '../../../../../../store/inventoryStore'
+import useInventoryStore from '../../../../../../../store/inventoryStore'
 import './CardContent.css'
 
 
 
 const CardContent = ({ allData, selectedVariantIndex = 0 }) => {
     const [localData, setLocalData] = useState(null)
-    
+
     // Subscribe to store changes
     const variant = useInventoryStore(state => {
         const type = state.curtainTypes.find(t => t.id === allData?.typeId)

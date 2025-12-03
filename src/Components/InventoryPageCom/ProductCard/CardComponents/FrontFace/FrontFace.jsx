@@ -2,11 +2,11 @@ import { useState } from 'react'
 import CardContent from './FF_components/CardContent/CardContent'
 import InventoryActions from './FF_components/InventoryActions/InventoryActions'
 import SCBG from './FF_components/SCBG/SCBG'
-import testImage from '../../../../assets/Images/Gallery/01.webp'
+import testImage from '../../../../../assets/Images/Gallery/01.webp'
 import './FrontFace.css'
 
 const FrontFace = ({ handleAction, allData, selectedVariantIndex = 0, onSelectVariant, activeFilterColor, isManuallySelected }) => {
-    
+
     // use selected variant index passed from parent, no local reset
     const imageSrc = allData?.variants?.[selectedVariantIndex]?.image || testImage;
     const selectedVariant = allData?.variants?.[selectedVariantIndex] || null;

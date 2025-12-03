@@ -1,5 +1,5 @@
 import './FormHeader.css'
-import useInventoryStore from '../../../../../../store/inventoryStore'
+import useInventoryStore from '../../../../../../../store/inventoryStore'
 
 const FormHeader = ({ activeAction, allData, selectedVariantIndex = 0 }) => {
     // Use the passed-in allData directly to get the correct variant
@@ -7,7 +7,7 @@ const FormHeader = ({ activeAction, allData, selectedVariantIndex = 0 }) => {
     const variant = allData?.variants?.[selectedVariantIndex]
 
     // Still fetch the curtain type from store for the type name
-    const curtainType = useInventoryStore(state => 
+    const curtainType = useInventoryStore(state =>
         state.curtainTypes.find(t => t.id === allData?.typeId)
     )
 
