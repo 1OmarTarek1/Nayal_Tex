@@ -28,6 +28,7 @@ const LazyImg = ({ src, alt, className }) => {
       src={visible ? src : undefined}
       alt={alt}
       className={className}
+      loading="lazy"
       style={{
         width: '100%',
         height: 'auto',

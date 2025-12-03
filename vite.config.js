@@ -17,7 +17,7 @@ export default defineConfig({
     glsl(),  // 👈 أضف البلجن هنا
   ],
   css: {
-    devSourcemap: true, 
+    devSourcemap: true,
   },
   resolve: {
     alias: {
@@ -25,4 +25,22 @@ export default defineConfig({
       'react-router-dom/dist/index.mjs': 'react-router-dom/dist/index.js',
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-charts': ['recharts'],
+          'vendor-ui': [
+            'react-icons',
+            'react-masonry-css',
+            'yet-another-react-lightbox',
+            'react-virtuoso'
+          ],
+          'vendor-state': ['zustand']
+        }
+      }
+    }
+  }
 })
