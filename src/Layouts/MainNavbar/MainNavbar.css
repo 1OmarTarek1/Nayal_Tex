@@ -246,6 +246,7 @@
     backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     backdrop-filter: blur(1px);
+    opacity: 0;
   }
 
   .navMenu::before {
@@ -261,6 +262,7 @@
   .navMenu.active {
     height: 263px;
     border: 1px solid #ffffff2c;
+    opacity: 1;
   }
 
   .navItem {
