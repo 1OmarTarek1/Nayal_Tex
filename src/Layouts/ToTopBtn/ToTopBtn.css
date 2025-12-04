@@ -6,7 +6,8 @@
     justify-content: center;
     align-items: center;
     position: fixed;
-    bottom: .5%;
+    bottom: 25px;
+    left: 50%;
     z-index: 5000;
     font-size: 23px;
     border-radius: 50%;
@@ -15,11 +16,32 @@
     outline: none;
     background-color: var(--primary-color);
     color: var(--DT-text);
-    /* opacity: .5; */
     overflow: hidden;
-    transition: all .3s;
     cursor: pointer;
     line-height: 0;
+    /* Performance optimizations */
+    will-change: transform, opacity;
+    /* Hidden by default - moved down and transparent */
+    transform: translate(-50%, 100px) translate3d(0, 0, 0);
+    opacity: 0;
+    pointer-events: none;
+    /* Smooth transitions for all states */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease;
+}
+
+/* Visible state - centered at bottom */
+.arrow-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0) translate3d(0, 0, 0);
+}
+
+/* At bottom state - move to left side */
+.arrow-btn.at-bottom {
+    bottom: 15px;
+    /* Move from center to left using only transform */
+    transform: translate(calc(-50vw + 55px), 0) translate3d(0, 0, 0);
 }
 
 .arrow-btn .lines-wrapper {
@@ -34,29 +56,28 @@
     position: absolute;
     left: 49%;
     top: 50%;
-    transition: all .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    will-change: transform;
 }
 
 .arrow-btn .line-1 {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
 }
 
 .arrow-btn .line-2 {
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 100%) translate3d(0, 0, 0);
 }
 
-
 .arrow-btn:hover .line-1 {
-    transform: translate(-50%, -150%);
+    transform: translate(-50%, -150%) translate3d(0, 0, 0);
 }
 
 .arrow-btn:hover .line-2 {
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
 }
 
 .arrow-btn svg {
-    transition: all .3s ease-in-out;
+    transition: transform .3s ease-in-out;
 }
-
 
 /*END UP Button*/

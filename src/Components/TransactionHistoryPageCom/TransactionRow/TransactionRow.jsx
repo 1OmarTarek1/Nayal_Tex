@@ -203,4 +203,4 @@ const TransactionRow = ({ serial, tx, formatDate, formatTime, getTypeLabel, getT
     );
 };
 
-export default TransactionRow;
+export default React.memo(TransactionRow);

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { DynamicNav, MainContainer } from '../../Layouts';
 import useInventoryStore from '../../store/inventoryStore';
@@ -63,7 +63,7 @@ const TransactionHistoryPage = () => {
     setPageToast
   );
 
-  const formatDatePart = (isoString) => {
+  const formatDatePart = useCallback((isoString) => {
     const date = new Date(isoString);
     const year = date.getFullYear();
     const month = (date.getMonth() + 1).toString().padStart(2, '0');
@@ -74,9 +74,9 @@ const TransactionHistoryPage = () => {
     const dayName = days[date.getDay()];
 
     return `${dayName}\u00A0\u00A0-\u00A0\u00A0${toArabicDigits(day)} / ${toArabicDigits(month)} /  ${toArabicDigits(year)}`;
-  };
+  }, []);
 
-  const formatTimePart = (isoString) => {
+  const formatTimePart = useCallback((isoString) => {
     const date = new Date(isoString);
     // 12-hour time with AM/PM; map AM/PM to Arabic letters
     const timeStr = date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true }); // e.g. 02:34 PM
@@ -86,15 +86,15 @@ const TransactionHistoryPage = () => {
     const period = (parts[1] || '').toUpperCase();
     const arabicPeriod = period === 'AM' ? 'ص' : period === 'PM' ? 'م' : parts[1] || '';
     return `${toArabicDigits(timePart)} ${arabicPeriod}`; // e.g. ٠٢:٣٤ م
-  };
+  }, []);
 
-  const getTypeLabel = (type) => {
+  const getTypeLabel = useCallback((type) => {
     return type === 'add' ? 'إضافة' : 'سحـب';
-  };
+  }, []);
 
-  const getTypeClass = (type) => {
+  const getTypeClass = useCallback((type) => {
     return type === 'add' ? 'type-add' : 'type-remove';
-  };
+  }, []);
 
   return (
     <>
