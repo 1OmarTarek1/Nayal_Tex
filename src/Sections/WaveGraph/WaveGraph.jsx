@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer
 } from "recharts";
+import { CustomTooltip } from '../../Components';
 import './WaveGraph.css';
 
 const WaveGraph = ({ data = [] }) => {
@@ -36,14 +37,19 @@ const WaveGraph = ({ data = [] }) => {
         <XAxis dataKey="name" tick={{ fill: "var(--DT-text)", fontSize: 11 }} />
         <YAxis tick={{ fill: "var(--DT-text)", fontSize: 11 }} tickMargin={25} width={35} />
         <Tooltip
-          contentStyle={{ background: "var(--DT-component)", color: "var(--DT-text)" }}
-          cursor={{ fill: "rgba(106, 52, 194, 0.15)" }} // ظل بنفسجي شفاف عند hover
+          content={
+            <CustomTooltip
+              type="area"
+              valueFormatter={(value) => `${value} وحدة`}
+            />
+          }
+          cursor={{ fill: "rgba(106, 52, 194, 0.15)" }}
         />
         <Area
           type="monotone"
           dataKey="uv"
-          stroke="var(--primary2-color)"   // اللون البنفسجي
-          fill="rgba(106, 52, 194, 0.3)"  // تعبئة شبه شفافة بنفسجي فاتح
+          stroke="var(--primary2-color)"
+          fill="rgba(106, 52, 194, 0.3)"
           name="المبيعات الشهرية"
         />
       </AreaChart>

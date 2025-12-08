@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import useInventoryStore from '../store/inventoryStore';
 
 export const useTransactionActions = (
   transactions,
@@ -44,30 +45,30 @@ export const useTransactionActions = (
     }
   };
 
-  const handleDeleteAllConfirmed = async () => {
-    // delete all transactions with revert; collect deleted copies
-    const all = [...transactions];
-    const deleted = [];
-    const failed = [];
-    for (const tx of all) {
-      try {
-        await deleteTransactionWithRevert(tx.id);
-        deleted.push({ ...tx });
-      } catch (err) {
-        failed.push({ tx, err });
+  const deleteAllTransactionsWithRevert = useInventoryStore(state => state.deleteAllTransactionsWithRevert);
+
+  const handleDeleteAllConfirmed = () => {
+    // Optimized Bulk Delete
+    try {
+      // Create a snapshot for undo (optional, if memory allows)
+      // For very large datasets, we might want to skip undo or limit it, 
+      // but for ~500-1000 items it should be fine to store in memory for a few seconds.
+      const deletedSnapshot = [...transactions];
+
+      // Execute optimized store action
+      deleteAllTransactionsWithRevert();
+
+      if (deletedSnapshot.length > 0) {
+        if (undoBuffer?.timeoutId) clearTimeout(undoBuffer.timeoutId);
+        const timeoutId = setTimeout(() => setUndoBuffer(null), 8000);
+
+        setUndoBuffer({ txs: deletedSnapshot, timeoutId });
+        setUndoCountdown(8);
+        setPageToast({ message: `تم حذف ${deletedSnapshot.length} عملية. يمكنك التراجع خلال 8 ثوانٍ.`, type: 'success' });
       }
-    }
-
-    if (deleted.length > 0) {
-      if (undoBuffer?.timeoutId) clearTimeout(undoBuffer.timeoutId);
-      const timeoutId = setTimeout(() => setUndoBuffer(null), 8000);
-      setUndoBuffer({ txs: deleted, timeoutId });
-      setUndoCountdown(8);
-      setPageToast({ message: `تم حذف ${deleted.length} عملية. يمكنك التراجع خلال 8 ثوانٍ.`, type: 'success' });
-    }
-
-    if (failed.length > 0) {
-      setPageToast({ message: `فشل حذف ${failed.length} عملية بسبب قيود المخزون`, type: 'warning' });
+    } catch (err) {
+      setPageToast({ message: 'حدث خطأ أثناء حذف العمليات', type: 'error' });
+      console.error(err);
     }
 
     setDeleteAllOpen(false);

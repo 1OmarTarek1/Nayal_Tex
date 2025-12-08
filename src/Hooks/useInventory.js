@@ -158,30 +158,8 @@ export const useTransactions = () => {
   };
 
   const deleteTransactionWithRevert = (transactionId) => {
-    const { transactions, getProduct, updateVariantInventory, deleteTransaction } = store;
-    const tx = transactions.find(t => t.id === transactionId);
-    if (!tx) {
-      throw new Error('لم يتم العثور على العملية');
-    }
-
-    const product = getProduct(tx.typeId, tx.shapeId, tx.variantId);
-    if (!product) throw new Error('لم يتم العثور على المنتج');
-
-    // Revert the effects of the transaction
-    if (tx.type === 'add') {
-      // added X before -> subtract from inStock
-      const newInStock = product.inStock - tx.amount;
-      if (newInStock < 0) throw new Error('لا يمكن التراجع عن العملية: المخزون الناتج سيكون بالسالب');
-      updateVariantInventory(tx.typeId, tx.shapeId, tx.variantId, newInStock, product.sold);
-    } else if (tx.type === 'remove') {
-      // removed X before -> add back to inStock and subtract from sold
-      const newInStock = product.inStock + tx.amount;
-      const newSold = Math.max(0, product.sold - tx.amount);
-      updateVariantInventory(tx.typeId, tx.shapeId, tx.variantId, newInStock, newSold);
-    }
-
-    // Now delete the transaction record
-    deleteTransaction(transactionId);
+    // Optimized Atomic Store Call
+    store.deleteTransactionAndRevert(transactionId);
   };
 
   return {

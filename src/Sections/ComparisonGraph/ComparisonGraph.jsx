@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import useInventoryStore from '../../store/inventoryStore';
+import { CustomTooltip } from '../../Components';
 import './ComparisonGraph.css';
 
 /**
@@ -21,7 +22,7 @@ const ComparisonGraph = () => {
       }
       if (tx.type === 'add') {
         dataByMonth[monthKey].added += tx.amount;
-      } else if (tx.type === 'remove') {
+      } else if (tx.type === 'remove' || tx.type === 'sell') {
         dataByMonth[monthKey].removed += tx.amount;
       }
     });
@@ -67,8 +68,12 @@ const ComparisonGraph = () => {
           width={35}
         />
         <Tooltip
-          contentStyle={{ background: "var(--DT-component)", color: "var(--DT-text)" }}
-          formatter={(value) => `${value} وحدة`}
+          content={
+            <CustomTooltip
+              type="line"
+              valueFormatter={(value) => `${value} وحدة`}
+            />
+          }
         />
         <Legend wrapperStyle={{ color: "var(--DT-text)" }} />
         <Line

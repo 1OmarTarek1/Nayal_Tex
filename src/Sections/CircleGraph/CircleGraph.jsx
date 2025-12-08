@@ -1,4 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts';
+import { CustomTooltip } from '../../Components';
 import './CircleGraph.css';
 
 const CircleGraph = ({ data = [] }) => {
@@ -32,32 +33,6 @@ const CircleGraph = ({ data = [] }) => {
     fill: colors[index % colors.length]
   }));
 
-  // Custom tooltip
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div style={{
-          background: 'var(--DT-component)',
-          border: '1px solid var(--DT-borderLight)',
-          padding: '10px 15px',
-          borderRadius: '8px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-        }}>
-          <p style={{ color: 'var(--DT-text)', margin: 0, fontWeight: 600, marginBottom: '5px' }}>
-            {payload[0].payload.name}
-          </p>
-          <p style={{ color: 'var(--primary2-color)', margin: 0 }}>
-            الكمية: {payload[0].payload.quantity} وحدة
-          </p>
-          <p style={{ color: 'var(--primary2-color)', margin: 0 }}>
-            النسبة: {payload[0].value}%
-          </p>
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <ResponsiveContainer width="100%" height={400}>
       <BarChart
@@ -78,7 +53,38 @@ const CircleGraph = ({ data = [] }) => {
           tick={{ fill: "var(--DT-text)", fontSize: 11 }}
           width={30}
         />
-        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(106, 52, 194, 0.1)' }} />
+        <Tooltip
+          content={
+            <CustomTooltip
+              customContent={({ active, payload }) => {
+                if (!active || !payload || payload.length === 0) return null;
+
+                const data = payload[0];
+                return (
+                  <div style={{
+                    background: 'var(--DT-component)',
+                    border: '1px solid var(--DT-borderLight)',
+                    padding: '12px 16px',
+                    borderRadius: '8px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    minWidth: '150px'
+                  }}>
+                    <p style={{ color: 'var(--DT-text)', margin: 0, fontWeight: 600, marginBottom: '8px', fontSize: '13px' }}>
+                      {data.payload.name}
+                    </p>
+                    <p style={{ color: 'var(--primary2-color)', margin: 0, fontSize: '12px' }}>
+                      الكمية: {data.payload.quantity} وحدة
+                    </p>
+                    <p style={{ color: 'var(--primary2-color)', margin: 0, marginTop: '4px', fontSize: '12px' }}>
+                      النسبة: {data.value}%
+                    </p>
+                  </div>
+                );
+              }}
+            />
+          }
+          cursor={{ fill: 'rgba(106, 52, 194, 0.1)' }}
+        />
         <Bar
           dataKey="percentage"
           radius={[0, 8, 8, 0]}

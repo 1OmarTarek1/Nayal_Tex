@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import useInventoryStore from '../../store/inventoryStore';
+import { CustomTooltip } from '../../Components';
 import './ProductRemovedGraph.css';
 
 /**
@@ -13,7 +14,7 @@ const ProductRemovedGraph = () => {
     const removedByMonth = {};
 
     transactions
-      .filter(tx => tx.type === 'remove')
+      .filter(tx => tx.type === 'remove' || tx.type === 'sell')
       .forEach(tx => {
         const d = new Date(tx.date);
         const monthKey = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`; // Format: YYYY-MM
@@ -61,9 +62,13 @@ const ProductRemovedGraph = () => {
           width={35}
         />
         <Tooltip
-          contentStyle={{ background: "var(--DT-component)", color: "var(--DT-text)" }}
+          content={
+            <CustomTooltip
+              type="bar"
+              valueFormatter={(value) => `${value} وحدة`}
+            />
+          }
           cursor={{ fill: "rgba(244, 67, 54, 0.15)" }}
-          formatter={(value) => `${value} وحدة`}
         />
         <Legend wrapperStyle={{ color: "var(--DT-text)" }} />
         <Bar

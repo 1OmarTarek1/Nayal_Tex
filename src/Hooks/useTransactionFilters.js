@@ -26,7 +26,8 @@ export const useTransactionFilters = (transactions) => {
   const filteredTransactions = useMemo(() => {
     let result = transactions.filter(tx => {
       // Match transaction type (add/remove)
-      const typeMatch = filterType === 'all' || tx.type === filterType;
+      const typeMatch = filterType === 'all' ||
+        (filterType === 'remove' ? (tx.type === 'remove' || tx.type === 'sell') : tx.type === filterType);
 
       // Match curtain type (case-insensitive and trimmed comparison)
       const curtainTypeMatch = curtainType === 'all' ||
@@ -106,6 +107,22 @@ export const useTransactionFilters = (transactions) => {
     return filteredTransactions.reduce((s, tx) => s + (tx.amount || 0), 0);
   }, [filteredTransactions]);
 
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 50;
+
+  // Reset page when filters change
+  useMemo(() => {
+    setCurrentPage(1);
+  }, [filterType, curtainType, colorFilter, searchTerm, dateSort, quantitySort, dateFrom, dateTo]);
+
+  const totalPages = Math.ceil(filteredTransactions.length / itemsPerPage);
+
+  const paginatedTransactions = useMemo(() => {
+    const start = (currentPage - 1) * itemsPerPage;
+    return filteredTransactions.slice(start, start + itemsPerPage);
+  }, [filteredTransactions, currentPage, itemsPerPage]);
+
   return {
     filterType, setFilterType,
     curtainType, setCurtainType,
@@ -116,9 +133,14 @@ export const useTransactionFilters = (transactions) => {
     dateFrom, setDateFrom,
     dateTo, setDateTo,
     clearAllFilters,
-    filteredTransactions,
+    filteredTransactions, // Keep full list for stats if needed
+    paginatedTransactions, // Export paginated list for table
     uniqueColors,
     stats,
-    filteredTotal
+    filteredTotal,
+    currentPage,
+    setCurrentPage,
+    totalPages,
+    itemsPerPage
   };
 };

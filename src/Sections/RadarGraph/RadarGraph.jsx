@@ -1,4 +1,5 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { CustomTooltip } from '../../Components';
 import './RadarGraph.css'
 
 const RadarGraph = ({ data = [] }) => {
@@ -57,7 +58,14 @@ const RadarGraph = ({ data = [] }) => {
           />
 
           {/* Tooltip */}
-          <Tooltip contentStyle={{ background: 'var(--DT-component)', color: 'var(--primary2-color)' }} />
+          <Tooltip
+            content={
+              <CustomTooltip
+                type="default"
+                valueFormatter={(value) => `${value} وحدة`}
+              />
+            }
+          />
 
         </RadarChart>
       </ResponsiveContainer>

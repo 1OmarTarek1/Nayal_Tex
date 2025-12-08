@@ -5,7 +5,12 @@ import SCBG from './FF_components/SCBG/SCBG'
 import testImage from '../../../../../assets/Images/Gallery/01.webp'
 import './FrontFace.css'
 
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 const FrontFace = ({ handleAction, allData, selectedVariantIndex = 0, onSelectVariant, activeFilterColor, isManuallySelected }) => {
+
+    const [openLightbox, setOpenLightbox] = useState(false);
 
     // use selected variant index passed from parent, no local reset
     const imageSrc = allData?.variants?.[selectedVariantIndex]?.image || testImage;
@@ -18,9 +23,25 @@ const FrontFace = ({ handleAction, allData, selectedVariantIndex = 0, onSelectVa
     return (
         <>
             <div className="imageContent">
-                <div className="cardImgWrapper">
+                <div
+                    className="cardImgWrapper"
+                    onClick={() => setOpenLightbox(true)}
+                    style={{ cursor: 'pointer' }}
+                    title="اضغط لتكبير الصورة"
+                >
                     <img src={imageSrc} alt={allData?.name || ''} />
                 </div>
+
+                <Lightbox
+                    open={openLightbox}
+                    close={() => setOpenLightbox(false)}
+                    slides={allData?.variants?.map(v => ({ src: v.image, alt: v.name })) || [{ src: imageSrc }]}
+                    index={selectedVariantIndex}
+                    carousel={{ finite: true }}
+                    on={{
+                        view: ({ index }) => onSelectVariant?.(index)
+                    }}
+                />
                 <SCBG
                     variants={allData?.variants || []}
                     selectedIndex={selectedVariantIndex}

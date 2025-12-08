@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import useInventoryStore from '../../store/inventoryStore';
+import { CustomTooltip } from '../../Components';
 import './ProductAddedGraph.css';
 
 /**
@@ -61,9 +62,13 @@ const ProductAddedGraph = () => {
           width={35}
         />
         <Tooltip
-          contentStyle={{ background: "var(--DT-component)", color: "var(--DT-text)" }}
+          content={
+            <CustomTooltip
+              type="bar"
+              valueFormatter={(value) => `${value} وحدة`}
+            />
+          }
           cursor={{ fill: "rgba(76, 175, 80, 0.15)" }}
-          formatter={(value) => `${value} وحدة`}
         />
         <Legend wrapperStyle={{ color: "var(--DT-text)" }} />
         <Bar

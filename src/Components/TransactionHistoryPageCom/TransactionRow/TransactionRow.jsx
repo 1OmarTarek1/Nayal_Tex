@@ -70,7 +70,7 @@ const TransactionRow = ({ serial, tx, formatDate, formatTime, getTypeLabel, getT
         try {
             if (onEditConfirmed) {
                 const metadata = {};
-                if (tx.type === 'remove') {
+                if (tx.type === 'remove' || tx.type === 'sell') {
                     metadata.recipientName = recipientName;
                     metadata.recipientPhone = recipientPhone;
                 }
@@ -140,7 +140,7 @@ const TransactionRow = ({ serial, tx, formatDate, formatTime, getTypeLabel, getT
                         <label>الكمية الحالية: <strong>{tx.amount}</strong></label>
                         <input id='userCount' type="number" value={newAmount} onChange={(e) => setNewAmount(e.target.value)} min="1" />
                     </div>
-                    {tx.type === 'remove' && (
+                    {(tx.type === 'remove' || tx.type === 'sell') && (
                         <>
                             <div className="formGroup">
                                 <label>اسم العميل:</label>
@@ -188,7 +188,7 @@ const TransactionRow = ({ serial, tx, formatDate, formatTime, getTypeLabel, getT
                 <Modal onClose={() => setConfirmEditOpen(false)}>
                     <h3>تأكيد تعديل العملية</h3>
                     <p>هل أنت متأكد من تعديل الكمية من <strong>{tx.amount}</strong> إلى <strong>{newAmount}</strong>؟</p>
-                    {tx.type === 'remove' && (
+                    {(tx.type === 'remove' || tx.type === 'sell') && (
                         <div style={{ marginTop: 8, fontSize: '0.9em', color: '#666' }}>
                             <p>سيتم تحديث بيانات العميل أيضاً.</p>
                         </div>

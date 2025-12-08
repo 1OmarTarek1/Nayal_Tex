@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import FrontFace from './CardComponents/FrontFace/FrontFace'
 import BackFace from './CardComponents/BackFace/BackFace'
 import './ProductCard.css'
 
-const ProductCard = ({allData, activeFilterColor}) => {
+const ProductCard = ({ allData, activeFilterColor }) => {
   const [flipped, setFlipped] = useState(false);
   const [activeAction, setActiveAction] = useState(null);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
@@ -71,4 +71,36 @@ const ProductCard = ({allData, activeFilterColor}) => {
   )
 }
 
-export default ProductCard
+// Custom comparison function for memoization
+const arePropsEqual = (prevProps, nextProps) => {
+  // 1. Check if active filter changed
+  if (prevProps.activeFilterColor !== nextProps.activeFilterColor) {
+    return false;
+  }
+
+  // 2. Check if static identifiers changed (unlikely within same list position but safe to check)
+  if (prevProps.allData.id !== nextProps.allData.id) {
+    return false;
+  }
+
+  // 3. Deep compare only the relevant mutable fields in variants (inStock, sold)
+  // This avoids re-rendering when the store creates new object references but data is same
+  const prevVars = prevProps.allData.variants || [];
+  const nextVars = nextProps.allData.variants || [];
+
+  if (prevVars.length !== nextVars.length) return false;
+
+  for (let i = 0; i < prevVars.length; i++) {
+    if (
+      prevVars[i].inStock !== nextVars[i].inStock ||
+      prevVars[i].sold !== nextVars[i].sold ||
+      prevVars[i].code !== nextVars[i].code // in case code color changes (rare)
+    ) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
+export default React.memo(ProductCard, arePropsEqual);

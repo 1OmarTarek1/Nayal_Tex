@@ -1,0 +1,59 @@
+.inventoryPage .sectionHeader {
+    display: flex;
+    justify-content: center;
+    /* gap: 5px; */
+    margin-top: 1rem;
+    background-color: var(--DT-component);
+    border-radius: 10px;
+}
+
+.inventoryPage .sectionTitle {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--DT-borderLight);
+    background-color: var(--DT-bg);
+    padding: 30px 0;
+    width: 150px;
+    text-align: center;
+    /* border-radius: var(--radius); */
+    margin: 0;
+    line-height: 0;
+    /* border: 1px solid var(--DT-borderLight); */
+}
+
+/* Scroll Buttons */
+.inventoryPage .scrollBtn {
+    width: 45px;
+    /* border-radius: 12px; */
+    /* border: 2px solid var(--DT-borderLight); */
+    background: var(--DT-bg);
+    backdrop-filter: blur(10px);
+    color: var(--primary2-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+.inventoryPage .scrollBtn:hover {
+    background: var(--primary2-color);
+    color: var(--DT-component);
+    border-color: var(--primary2-color);
+    /* transform: scale(1.03); */
+    box-shadow: 0 6px 20px rgba(106, 52, 194, 0.3);
+}
+
+.inventoryPage .scrollBtn:active {
+    transform: scale(0.95);
+}
+
+.inventoryPage .scrollBtn svg {
+    transition: transform 0.3s ease;
+}
+
+.inventoryPage .scrollBtn:hover svg {
+    transform: scale(1.15);
+}

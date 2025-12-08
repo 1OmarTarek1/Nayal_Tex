@@ -40,7 +40,11 @@ const TransactionHistoryPage = () => {
     filteredTransactions,
     uniqueColors,
     stats,
-    filteredTotal
+    filteredTotal,
+    paginatedTransactions,
+    currentPage,
+    setCurrentPage,
+    totalPages
   } = useTransactionFilters(transactions);
 
   const {
@@ -132,7 +136,7 @@ const TransactionHistoryPage = () => {
           />
 
           <TransactionTable
-            transactions={filteredTransactions}
+            transactions={paginatedTransactions} // Use paginated list
             filteredTotal={filteredTotal}
             totalTransactions={stats.transactions}
             formatDate={formatDatePart}
@@ -142,6 +146,33 @@ const TransactionHistoryPage = () => {
             onDeleteConfirmed={handleDeleteConfirmed}
             onEditConfirmed={handleEditConfirmed}
           />
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <div className="paginationControls" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '15px', marginTop: '20px', paddingBottom: '20px' }}>
+              <button
+                className="actionBtn"
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                style={{ opacity: currentPage === 1 ? 0.5 : 1 }}
+              >
+                السابق
+              </button>
+
+              <span style={{ fontSize: '1rem', fontWeight: 'bold', color: 'var(--DT-text)' }}>
+                صفحة {toArabicDigits(currentPage)} من {toArabicDigits(totalPages)}
+              </span>
+
+              <button
+                className="actionBtn"
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                style={{ opacity: currentPage === totalPages ? 0.5 : 1 }}
+              >
+                التالي
+              </button>
+            </div>
+          )}
 
           {/* Delete All Confirmation Modal */}
           {deleteAllOpen && (

@@ -1,4 +1,5 @@
 import { Pie, PieChart, ResponsiveContainer, Cell, Tooltip, Legend } from 'recharts';
+import { CustomTooltip } from '../../Components';
 import './PizzaGraph.css'
 
 const PizzaGraph = ({ data = [], isAnimationActive = true }) => {
@@ -65,38 +66,6 @@ const PizzaGraph = ({ data = [], isAnimationActive = true }) => {
     );
   };
 
-  // Custom tooltip with proper colors
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div style={{
-          background: 'var(--DT-component)',
-          border: '1px solid var(--DT-borderLight)',
-          padding: '10px 15px',
-          borderRadius: '8px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '5px' }}>
-            <div style={{
-              width: '16px',
-              height: '16px',
-              borderRadius: '3px',
-              background: payload[0].payload.color,
-              border: '1px solid var(--DT-borderLight)'
-            }}></div>
-            <p style={{ color: 'var(--DT-text)', margin: 0, fontWeight: 600 }}>
-              {payload[0].name}
-            </p>
-          </div>
-          <p style={{ color: 'var(--primary2-color)', margin: 0 }}>
-            الكمية: {payload[0].value} وحدة
-          </p>
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <ResponsiveContainer width="100%" height={400}>
       <PieChart>
@@ -120,7 +89,15 @@ const PizzaGraph = ({ data = [], isAnimationActive = true }) => {
           ))}
         </Pie>
 
-        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.1)' }} />
+        <Tooltip
+          content={
+            <CustomTooltip
+              type="pie"
+              valueFormatter={(value) => `الكمية: ${value} وحدة`}
+            />
+          }
+          cursor={{ fill: 'rgba(255,255,255,0.1)' }}
+        />
         <Legend
           wrapperStyle={{ color: 'var(--DT-text)' }}
           formatter={(value, entry) => (
