@@ -5,3 +5,5 @@ export { default as MainContainer } from './MainContainer/MainContainer';
 export { default as AppRoutes } from './Routes/AppRoutes';
 export { default as Toast } from './Toast/Toast';
 export { default as ToTopBtn } from './ToTopBtn/ToTopBtn';
+export { default as LoadingSec } from './LoadingSec/LoadingSec';
+
