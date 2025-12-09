@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { toWesternDigits } from '../utils';
 
 export const useTransactionFilters = (transactions) => {
   const [filterType, setFilterType] = useState('all'); // all, add, remove
@@ -38,12 +39,17 @@ export const useTransactionFilters = (transactions) => {
         (tx.colorName && tx.colorName.trim().toLowerCase() === colorFilter.trim().toLowerCase());
 
       // Search across multiple fields (case-insensitive)
+      // Convert search term to western digits for numeric fields
+      const normalizedSearch = searchTerm.toLowerCase();
+      const numericSearch = toWesternDigits(searchTerm);
+
       const searchMatch = !searchTerm ||
-        (tx.productName && tx.productName.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (tx.colorName && tx.colorName.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (tx.typeName && tx.typeName.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (tx.shapeName && tx.shapeName.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        (tx.recipientName && tx.recipientName.toLowerCase().includes(searchTerm.toLowerCase()));
+        (tx.productName && tx.productName.toLowerCase().includes(normalizedSearch)) ||
+        (tx.colorName && tx.colorName.toLowerCase().includes(normalizedSearch)) ||
+        (tx.typeName && tx.typeName.toLowerCase().includes(normalizedSearch)) ||
+        (tx.shapeName && tx.shapeName.toLowerCase().includes(normalizedSearch)) ||
+        (tx.recipientName && tx.recipientName.toLowerCase().includes(normalizedSearch)) ||
+        (tx.recipientPhone && tx.recipientPhone.toString().includes(numericSearch));
 
       // Date range filtering
       let dateMatch = true;

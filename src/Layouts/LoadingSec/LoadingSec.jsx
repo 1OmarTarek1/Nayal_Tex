@@ -13,7 +13,7 @@ const LoadingSec = ({ isLoadingSec, setIsLoadingSec }) => {
         }
 
         setIsLoadingSec(true);
-        const timer = setTimeout(() => setIsLoadingSec(false), 1500);
+        const timer = setTimeout(() => setIsLoadingSec(false), 900);
         return () => clearTimeout(timer);
     }, [setIsLoadingSec, location]);
 

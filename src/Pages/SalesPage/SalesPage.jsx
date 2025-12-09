@@ -1,12 +1,13 @@
 import { DynamicNav, MainContainer } from '../../Layouts';
 import { BuildingGraph, CircleGraph, PizzaGraph, WaveGraph, ProductAddedGraph, ProductRemovedGraph, ComparisonGraph } from '../../Sections';
 import RadarGraph from '../../Sections/RadarGraph/RadarGraph';
-import useInventoryAnalytics from '../../Hooks/useSalesAnalytics';
+import { useInventoryAnalytics, useDocumentTitle } from '../../Hooks';
 import { InventoryKPIs } from '../../Components';
 
 import './SalesPage.css';
 
 const SalesPage = () => {
+  useDocumentTitle('Sales Page');
   const { kpis, charts } = useInventoryAnalytics();
 
   return (

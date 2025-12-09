@@ -1,23 +1,22 @@
 import { useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { DynamicNav, MainContainer } from '../../Layouts';
-import useInventoryStore from '../../store/inventoryStore';
-import { useTransactions } from '../../Hooks/useInventory.js';
-import { Toast } from '../../Layouts';
-import { toArabicDigits } from '../../utils/numbers';
+import { DynamicNav, MainContainer, Toast } from '../../Layouts';
+import { useInventoryStore, useTransactions, useDocumentTitle, useTransactionFilters, useTransactionActions } from '../../Hooks';
+import { toArabicDigits } from '../../utils';
 import './TransactionHistoryPage.css';
 
 // Components
-import TransactionSummary from '../../Components/TransactionHistoryPageCom/TransactionSummary/TransactionSummary';
-import TransactionFilters from '../../Components/TransactionHistoryPageCom/TransactionFilters/TransactionFilters';
-import TransactionTable from '../../Components/TransactionHistoryPageCom/TransactionTable/TransactionTable';
-import UndoSnackbar from '../../Components/TransactionHistoryPageCom/UndoSnackbar/UndoSnackbar';
+import {
+  TransactionSummary,
+  TransactionFilters,
+  TransactionTable,
+  UndoSnackbar
+} from '../../Components';
 
-// Hooks
-import { useTransactionFilters } from '../../Hooks/useTransactionFilters';
-import { useTransactionActions } from '../../Hooks/useTransactionActions';
+
 
 const TransactionHistoryPage = () => {
+  useDocumentTitle('History Page');
   const transactions = useInventoryStore(state => state.transactions);
   const curtainTypes = useInventoryStore(state => state.curtainTypes);
   const { modifyTransaction, deleteTransactionWithRevert } = useTransactions();

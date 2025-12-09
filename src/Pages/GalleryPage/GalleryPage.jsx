@@ -5,11 +5,13 @@ import "yet-another-react-lightbox/styles.css";
 import GalleryImgsData from '../../Data/GalleryImgsData';
 import { LazyImg } from "../../Components";
 import { DynamicNav, MainContainer } from "../../Layouts";
+import { useDocumentTitle } from '../../Hooks';
 import './GalleryPage.css';
 
 const IMAGES_PER_LOAD = 20;
 
 const GalleryPage = () => {
+  useDocumentTitle('Gallery Page');
   const [shuffledImages, setShuffledImages] = useState([]);
   const [visibleImages, setVisibleImages] = useState([]);
   const [lightboxOpen, setLightboxOpen] = useState(false);

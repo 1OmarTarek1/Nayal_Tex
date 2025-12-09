@@ -1,12 +1,12 @@
 import { useState, useRef } from 'react'
 import { DynamicNav, MainContainer } from '../../Layouts'
 import { ProductCard, FilterSearch, SectionHeader } from '../../Components'
-import { useCurtainTypes } from '../../Hooks/useInventory.js';
-import useInventoryStore from '../../store/inventoryStore'; // Import store hook
-import { runSalesSimulation, runStockAddition } from '../../utils/seederUtils'; // Import simulation utilities
+import { useCurtainTypes, useInventoryStore, useDocumentTitle } from '../../Hooks'
+import { runSalesSimulation, runStockAddition } from '../../utils'
 import './InventoryPage.css';
 
 const InventoryPage = () => {
+  useDocumentTitle('Inventory Page');
   // Get data from centralized store
   const curtainTypes = useCurtainTypes();
   const { getAllProducts, updateVariantInventory, addTransaction } = useInventoryStore(); // Get actions
